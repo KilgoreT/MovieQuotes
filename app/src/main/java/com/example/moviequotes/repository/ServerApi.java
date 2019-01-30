@@ -1,5 +1,6 @@
 package com.example.moviequotes.repository;
 
+import com.example.moviequotes.repository.entity.QuoteDetailsResponse;
 import com.example.moviequotes.repository.entity.QuoteList;
 
 import io.reactivex.Observable;
@@ -13,5 +14,5 @@ public interface ServerApi {
     Observable<QuoteList> messages(@Query("offset") int offset, @Query("limit") int limit);
 
     @GET("detail.php")
-    Observable<String> messageDetails(@Query("id") int id);
+    Observable<QuoteDetailsResponse> messageDetails(@Query("id") int id);
 }

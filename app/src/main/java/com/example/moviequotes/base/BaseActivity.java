@@ -1,7 +1,5 @@
 package com.example.moviequotes.base;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -28,7 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
 
-    @Override
+/*    @Override
     public void showLoading() {
         hideLoading();
 //        mProgressDialog = CommonUtils.showLoadingDialog(this);
@@ -39,7 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity
 //        if (mProgressDialog != null && mProgressDialog.isShowing()) {
 //            mProgressDialog.cancel();
 //        }
-    }
+    }*/
 
     @Override
     public void showSnackBar(String message) {

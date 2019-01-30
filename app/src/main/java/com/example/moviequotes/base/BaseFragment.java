@@ -1,7 +1,6 @@
 package com.example.moviequotes.base;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +15,6 @@ public abstract class BaseFragment  extends Fragment implements MvpFragmentView 
 
     private BaseActivity mActivity;
     private Unbinder mUnbinder;
-    private ProgressDialog mProgressDialog;
 
 
     @Override
@@ -29,7 +27,16 @@ public abstract class BaseFragment  extends Fragment implements MvpFragmentView 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setUp(view);
+//        setUp(view);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        startRequest();
+    }
+
+    protected void startRequest() {
     }
 
     @Override
@@ -39,19 +46,6 @@ public abstract class BaseFragment  extends Fragment implements MvpFragmentView 
             BaseActivity activity = (BaseActivity) context;
             this.mActivity = activity;
             activity.onFragmentAttached();
-        }
-    }
-
-    @Override
-    public void showLoading() {
-        hideLoading();
-//        mProgressDialog = CommonUtils.showLoadingDialog(this.getContext());
-    }
-
-    @Override
-    public void hideLoading() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.cancel();
         }
     }
 
@@ -106,20 +100,11 @@ public abstract class BaseFragment  extends Fragment implements MvpFragmentView 
         return mActivity.getBaseContext();
     }
 
-   /* public ActivityComponent getActivityComponent() {
-        if (mActivity != null) {
-            return mActivity.getActivityComponent();
-        }
-        return null;
-    }*/
-
     public void setUnBinder(Unbinder unBinder) {
         mUnbinder = unBinder;
     }
 
     public abstract String getFragmentTag();
-
-    protected abstract void setUp(View view);
 
     @Override
     public void showLog(String message) {

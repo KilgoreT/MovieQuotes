@@ -4,11 +4,9 @@ import android.support.annotation.StringRes;
 
 public interface MvpView {
 
-    void showLoading();
+//    void showLoading();
 
-    void hideLoading();
-
-    //void openActivityOnTokenExpire();
+//    void hideLoading();
 
     void onError(@StringRes int resId);
 
@@ -21,9 +19,5 @@ public interface MvpView {
     void showSnackBar(String message);
 
     void showLog(String message);
-
-    //boolean isNetworkConnected();
-
-    //void hideKeyboard();
 
 }
