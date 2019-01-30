@@ -1,8 +1,7 @@
-package com.example.moviequotes.ui.ListQuoteFragment;
+package com.example.moviequotes.ui.ListQuote;
 
 import com.example.moviequotes.base.MvpFragmentView;
 import com.example.moviequotes.repository.entity.QuoteItem;
-import com.example.moviequotes.repository.entity.QuoteList;
 
 import java.util.List;
 

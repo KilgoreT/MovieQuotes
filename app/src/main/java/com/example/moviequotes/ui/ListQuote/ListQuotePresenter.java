@@ -1,4 +1,4 @@
-package com.example.moviequotes.ui.ListQuoteFragment;
+package com.example.moviequotes.ui.ListQuote;
 
 import com.example.moviequotes.base.BasePresenter;
 import com.example.moviequotes.repository.ServerApi;
@@ -27,7 +27,6 @@ public class ListQuotePresenter<V extends ListQuoteMvpView> extends BasePresente
     private final AtomicBoolean done = new AtomicBoolean(false);
     private final AtomicBoolean reloadData = new AtomicBoolean();
 
-
     public ListQuotePresenter(ServerApi mApi) {
         this.mApi = mApi;
     }
@@ -35,7 +34,18 @@ public class ListQuotePresenter<V extends ListQuoteMvpView> extends BasePresente
     @Override
     public void onAttach(V mvpFragmentView) {
         super.onAttach(mvpFragmentView);
-        showLog("Attach!");
+        if (mData.size() > 0 && getView() != null) {
+            getView().onReceiveResult(mData);
+        }
+    }
+
+    public List<QuoteItem> getData() {
+        return mData;
+    }
+
+    @Override
+    public int getDataCount() {
+        return mData.size();
     }
 
     @Override
@@ -61,8 +71,8 @@ public class ListQuotePresenter<V extends ListQuoteMvpView> extends BasePresente
 
         reloadData.set(false);
 
-        Disposable s = mApi.messages(mOffset, LIMIT)
-                .delay(500, TimeUnit.MILLISECONDS)
+        Disposable d = mApi.messages(mOffset, LIMIT)
+                .delay(800, TimeUnit.MILLISECONDS)
                 .map(new Function<QuoteList, List<QuoteItem>>() {
                     @Override
                     public List<QuoteItem> apply(QuoteList quoteList) throws Exception {
@@ -88,7 +98,8 @@ public class ListQuotePresenter<V extends ListQuoteMvpView> extends BasePresente
                         }
                     }
                 });
-                loadSub.add(s);
+                loadSub.add(d);
+
     }
 
     @Override
@@ -98,6 +109,7 @@ public class ListQuotePresenter<V extends ListQuoteMvpView> extends BasePresente
         }
         reloadData.set(true);
         done.set(false);
+        mData.clear();
         loadNext();
     }
 

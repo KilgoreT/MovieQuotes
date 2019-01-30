@@ -1,9 +1,12 @@
 package com.example.moviequotes.di.module;
 
 import com.example.moviequotes.repository.ServerApi;
-import com.example.moviequotes.ui.ListQuoteFragment.ListQuoteMvpPresenter;
-import com.example.moviequotes.ui.ListQuoteFragment.ListQuoteMvpView;
-import com.example.moviequotes.ui.ListQuoteFragment.ListQuotePresenter;
+import com.example.moviequotes.ui.ListQuote.ListQuoteMvpPresenter;
+import com.example.moviequotes.ui.ListQuote.ListQuoteMvpView;
+import com.example.moviequotes.ui.ListQuote.ListQuotePresenter;
+import com.example.moviequotes.ui.QuoteDetails.QuoteDetailsMvpPresenter;
+import com.example.moviequotes.ui.QuoteDetails.QuoteDetailsMvpView;
+import com.example.moviequotes.ui.QuoteDetails.QuoteDetailsPresenter;
 
 import javax.inject.Singleton;
 
@@ -15,7 +18,14 @@ public class PresenterModule {
 
     @Singleton
     @Provides
-    public ListQuoteMvpPresenter<ListQuoteMvpView> provideSpeedPresenter(ServerApi api) {
+    public ListQuoteMvpPresenter<ListQuoteMvpView> provideListQuotePresenter(ServerApi api) {
         return new ListQuotePresenter<>(api);
+    }
+
+
+    @Singleton
+    @Provides
+    public QuoteDetailsMvpPresenter<QuoteDetailsMvpView> provideQuoteDetailsPresenter(ServerApi api) {
+        return new QuoteDetailsPresenter<>(api);
     }
 }

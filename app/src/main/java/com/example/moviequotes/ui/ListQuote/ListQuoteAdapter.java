@@ -1,9 +1,7 @@
-package com.example.moviequotes.ui.ListQuoteFragment;
+package com.example.moviequotes.ui.ListQuote;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,14 +55,13 @@ public class ListQuoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 return holder;
         }
 
-        throw new IllegalArgumentException("Unknown viewType=" + viewType);
+        throw new IllegalArgumentException("Unknown viewType = " + viewType);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         switch (viewHolder.getItemViewType()) {
             case TYPE_PRELODER:
-                Log.d("###", "bing preloader!!!!!!!");
                 break;
             case TYPE_ITEM:
                 QuoteViewHolder holder = (QuoteViewHolder) viewHolder;
@@ -84,7 +81,6 @@ public class ListQuoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public int getItemCount() {
         return showPreloader ? mData.size() + 1 : mData.size();
-//        return mData.size();
     }
 
     public void showPreload(boolean show) {
@@ -95,7 +91,6 @@ public class ListQuoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 //            notifyItemRemoved(mData.size());
         }
         notifyDataSetChanged();
-//        notifyDataSetChanged();
     }
 
     public interface Listener {
@@ -114,13 +109,7 @@ class QuoteViewHolder extends RecyclerView.ViewHolder {
 
     void bind(QuoteItem item) {
         if (item.getId() == 0) {
-//            quote.setGravity(Gravity.START);
-//            quote.setTextColor(quote.getResources().getColor(R.color.colorPrimary));
-//            quote.setPadding(48, 0, 0, 0);
         } else {
-//            quote.setGravity(Gravity.END);
-//            quote.setTextColor(quote.getResources().getColor(R.color.colorAccent));
-//            quote.setPadding(0, 0, 48, 0);
         }
         quote.setText(item.getText());
     }
