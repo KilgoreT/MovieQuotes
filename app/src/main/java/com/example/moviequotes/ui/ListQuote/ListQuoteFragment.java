@@ -156,7 +156,6 @@ public class ListQuoteFragment extends BaseFragment implements ListQuoteMvpView,
 
     @Override
     public void onItemClick(int id) {
-        showSnackBar("Id = " + id);
         mListener.onQueryClick(id);
     }
 

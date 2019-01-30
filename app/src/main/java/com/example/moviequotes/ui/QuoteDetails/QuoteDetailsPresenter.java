@@ -54,4 +54,10 @@ public class QuoteDetailsPresenter<V extends QuoteDetailsMvpView> extends BasePr
                 });
         subs.add(d);
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        subs.clear();
+    }
 }

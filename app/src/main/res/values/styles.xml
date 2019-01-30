@@ -6,7 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="chipIconTint">@android:color/holo_green_light</item>
+    </style>
+
+    <style name="Background">
+        <item name="android:background">@color/colorBackground</item>
     </style>
 
 </resources>
