@@ -27,7 +27,6 @@ public abstract class BaseFragment  extends Fragment implements MvpFragmentView 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        setUp(view);
     }
 
     @Override

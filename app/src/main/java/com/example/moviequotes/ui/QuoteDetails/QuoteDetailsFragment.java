@@ -5,8 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.chip.Chip;
-import android.support.design.chip.ChipGroup;
 import android.support.design.chip.ChipDrawable;
+import android.support.design.chip.ChipGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +24,9 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static java.security.AccessController.getContext;
-
 
 public class QuoteDetailsFragment extends BaseFragment implements QuoteDetailsMvpView {
 
-    // TODO: 1/30/19 сюда нужно lce
     @Inject
     QuoteDetailsMvpPresenter<QuoteDetailsMvpView> mPresenter;
 
@@ -85,12 +82,6 @@ public class QuoteDetailsFragment extends BaseFragment implements QuoteDetailsMv
         mPresenter.messageDetaild(mParamId);
     }
 
-  /*  @Override
-    public void onResume() {
-        super.onResume();
-        mPresenter.messageDetaild(mParamId);
-    }*/
-
     @Override
     public void onDetach() {
         super.onDetach();
@@ -120,8 +111,6 @@ public class QuoteDetailsFragment extends BaseFragment implements QuoteDetailsMv
                 d.setChipBackgroundColor(getState("#BDBDBD"));
             }
             chip.setTextColor(Color.BLACK);
-
-//            ChipDrawable chipDrawable = ChipDrawable.createFromAttributes(getContext(), )
             tagGroup.addView(chip);
         }
     }

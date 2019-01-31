@@ -31,23 +31,4 @@ public class QuoteDetailsResponse {
         this.data = data;
     }
 
-/*    boolean ok;
-    List<Object> data;
-//    QuoteDetailsItem data;
-
-    public boolean isOk() {
-        return ok;
-    }
-
-    public void setOk(boolean ok) {
-        this.ok = ok;
-    }
-
-    public List<Object> getData() {
-        return data;
-    }
-
-    public void setData(List<Object> data) {
-        this.data = data;
-    }*/
 }

@@ -9,5 +9,5 @@ public interface ListQuoteMvpView extends MvpFragmentView {
 
     void onReceiveResult(List<QuoteItem> items);
     void onReceiveError(Throwable throwable);
-
+    void onDoneRequest();
 }

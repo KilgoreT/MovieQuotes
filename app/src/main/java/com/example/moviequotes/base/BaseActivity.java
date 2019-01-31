@@ -25,20 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
     }
 
-
-/*    @Override
-    public void showLoading() {
-        hideLoading();
-//        mProgressDialog = CommonUtils.showLoadingDialog(this);
-    }
-
-    @Override
-    public void hideLoading() {
-//        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-//            mProgressDialog.cancel();
-//        }
-    }*/
-
     @Override
     public void showSnackBar(String message) {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),

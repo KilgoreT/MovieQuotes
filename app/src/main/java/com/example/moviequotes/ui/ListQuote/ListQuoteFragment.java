@@ -134,11 +134,6 @@ public class ListQuoteFragment extends BaseFragment implements ListQuoteMvpView,
         return null;
     }
 
-  /*  @Override
-    protected void setUp(View view) {
-
-    }*/
-
     @Override
     public void onReceiveResult(List<QuoteItem> items) {
         lce.setVisibility(View.GONE);
@@ -150,8 +145,15 @@ public class ListQuoteFragment extends BaseFragment implements ListQuoteMvpView,
 
     @Override
     public void onReceiveError(Throwable throwable) {
+        lce.setVisibility(View.GONE);
         mAdapter.showPreload(false);
         showSnackBar(throwable.getMessage());
+    }
+
+    @Override
+    public void onDoneRequest() {
+        lce.setVisibility(View.GONE);
+        mAdapter.showPreload(false);
     }
 
     @Override

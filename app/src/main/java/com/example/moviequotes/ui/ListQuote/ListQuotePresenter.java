@@ -59,7 +59,8 @@ public class ListQuotePresenter<V extends ListQuoteMvpView> extends BasePresente
     @Override
     public void loadNext() {
 
-        if (done.get() || loadSub != null && loadSub.isDisposed()) {
+        if (done.get()) {
+            getView().onDoneRequest();
             return;
         }
 
@@ -104,7 +105,7 @@ public class ListQuotePresenter<V extends ListQuoteMvpView> extends BasePresente
 
     @Override
     public void reloadData() {
-        if (loadSub != null && !loadSub.isDisposed()) {
+        if (loadSub != null) {
             loadSub.clear();
         }
         reloadData.set(true);

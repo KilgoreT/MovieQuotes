@@ -108,13 +108,11 @@ public class ListQuoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public void showPreload(boolean show) {
-        showPreloader = show;
-        if (show) {
-//            notifyItemInserted(mData.size());
-        } else {
-//            notifyItemRemoved(mData.size());
+        if (showPreloader != show) {
+            if (showPreloader = show) {
+                notifyDataSetChanged();
+            }
         }
-        notifyDataSetChanged();
     }
 
     public interface Listener {
@@ -132,9 +130,6 @@ class QuoteLeftViewHolder extends RecyclerView.ViewHolder {
     }
 
     void bind(QuoteItem item) {
-        if (item.getId() == 0) {
-        } else {
-        }
         quote.setText(item.getText());
     }
 }
@@ -149,9 +144,6 @@ class QuoteRightViewHolder extends RecyclerView.ViewHolder {
     }
 
     void bind(QuoteItem item) {
-        if (item.getId() == 0) {
-        } else {
-        }
         quote.setText(item.getText());
     }
 }
