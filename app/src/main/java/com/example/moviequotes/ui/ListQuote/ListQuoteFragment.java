@@ -65,8 +65,8 @@ public class ListQuoteFragment extends BaseFragment implements ListQuoteMvpView,
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mPresenter.onAttach(this);
         mAdapter = new ListQuoteAdapter();
+        mPresenter.onAttach(this);
         mAdapter.setListener(this);
         list.setHasFixedSize(false);
         list.setAdapter(mAdapter);
@@ -139,13 +139,21 @@ public class ListQuoteFragment extends BaseFragment implements ListQuoteMvpView,
         lce.setVisibility(View.GONE);
         refresh.setEnabled(true);
         refresh.setRefreshing(false);
+        checkAdapter();
         mAdapter.showPreload(false);
         mAdapter.setData(items);
+    }
+
+    private void checkAdapter() {
+        if (mAdapter == null) {
+            mAdapter = new ListQuoteAdapter();
+        }
     }
 
     @Override
     public void onReceiveError(Throwable throwable) {
         lce.setVisibility(View.GONE);
+        checkAdapter();
         mAdapter.showPreload(false);
         showSnackBar(throwable.getMessage());
     }
@@ -153,6 +161,7 @@ public class ListQuoteFragment extends BaseFragment implements ListQuoteMvpView,
     @Override
     public void onDoneRequest() {
         lce.setVisibility(View.GONE);
+        checkAdapter();
         mAdapter.showPreload(false);
     }
 

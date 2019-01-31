@@ -55,6 +55,12 @@ public class QuoteDetailsFragment extends BaseFragment implements QuoteDetailsMv
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -79,7 +85,9 @@ public class QuoteDetailsFragment extends BaseFragment implements QuoteDetailsMv
         tagGroup.setVisibility(View.GONE);
         tvDate.setVisibility(View.GONE);
         tvQuote.setVisibility(View.GONE);
-        mPresenter.messageDetaild(mParamId);
+        if (mParamId > 0) {
+            mPresenter.messageDetaild(mParamId);
+        }
     }
 
     @Override
@@ -133,5 +141,9 @@ public class QuoteDetailsFragment extends BaseFragment implements QuoteDetailsMv
 
     public void setParamId(int paramId) {
         this.mParamId = paramId;
+    }
+
+    public int getParamId() {
+        return mParamId;
     }
 }

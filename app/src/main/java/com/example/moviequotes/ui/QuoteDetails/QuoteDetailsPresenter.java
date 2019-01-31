@@ -17,6 +17,7 @@ public class QuoteDetailsPresenter<V extends QuoteDetailsMvpView> extends BasePr
 
     private ServerApi mApi;
     private CompositeDisposable subs = new CompositeDisposable();
+    private int mId;
 
     public QuoteDetailsPresenter(ServerApi mApi) {
         this.mApi = mApi;
@@ -24,8 +25,9 @@ public class QuoteDetailsPresenter<V extends QuoteDetailsMvpView> extends BasePr
 
     @Override
     public void messageDetaild(int id) {
+        mId = id;
         subs.clear();
-        Disposable d = mApi.messageDetails(id)
+        Disposable d = mApi.messageDetails(mId)
                 .map(new Function<QuoteDetailsResponse, List<QuoteDetailsItem>>() {
                     @Override
                     public List<QuoteDetailsItem> apply(QuoteDetailsResponse quoteDetailsResponse) throws Exception {

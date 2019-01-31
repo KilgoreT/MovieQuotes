@@ -14,6 +14,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements ListQuoteFragment.OnListQuoteFragmentListener {
 
+    private static final String DETAIL_FRAGMENT_KEY = "detail_fragment";
+    private static final String ID_KEY = "id_key";
     private ListQuoteFragment mListQuoteFragment;
     private QuoteDetailsFragment mQuoteDetailsFragment;
     private FragmentManager mFragmentManager;
@@ -25,6 +27,23 @@ public class MainActivity extends BaseActivity implements ListQuoteFragment.OnLi
 
         setUnBinder(ButterKnife.bind(this));
         setFragment(getListQuoteFragment(), false);
+        if (savedInstanceState != null && savedInstanceState.getBoolean(DETAIL_FRAGMENT_KEY, false)) {
+            int id = savedInstanceState.getInt(ID_KEY);
+            if (id > 0) {
+                setFragment(getQuoteDetailsFragment(id), true);
+            }
+        }
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        Fragment fragment = obtainFragmentManager().findFragmentById(R.id.fragment);
+        if (fragment instanceof QuoteDetailsFragment) {
+            outState.putBoolean(DETAIL_FRAGMENT_KEY, true);
+            outState.putInt(ID_KEY, ((QuoteDetailsFragment) fragment).getParamId());
+        }
+        super.onSaveInstanceState(outState);
     }
 
     private void setFragment(Fragment fragment, boolean onTop) {
